@@ -5,13 +5,13 @@ export async function POST(request)
 {
   const { email, password } = await request.json();
 
-  if (email === "admin@local.local" && password === "admin")
+  if (email === "lahormiga@centro.imi" && password === "admin")
   {
     // expire in 30 days
     const token = sign({
       exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 30,
       email,
-      username: "fazt",
+      username: "lahormiga",
     }, "secret");
 
     const response = NextResponse.json({token});

@@ -4,6 +4,10 @@
   padding: 2rem;
   text-align: center;
 }
+.h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
 .main {
   width: inherit;
   height: inherit;
@@ -133,6 +137,51 @@
 }
 .avatar:hover {
     transform: scale(1.1);
+}
+/* -------------------------------------------------------
+RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 680px) {
+  .h1 {
+    font-size: 1.4em;
+    line-height: 0.8;
+  }
+  .formulario {
+    width: 300px;
+    height: 280px;
+    padding: 1rem 1rem;
+    gap: 1rem;
+  }
+  .input {
+    width: 70%;
+    height: 10%;
+    font-size: 1rem;
+    padding: 0.3em 0.5em;
+  }
+  .button {
+    padding: 0.5rem 1rem;
+    margin-top: 0.6em;
+    font-size: 1rem;
+  }
+  .loader {
+      margin-top: 0.4em;
+      width: 50px;
+      height: 50px;
+      border: 5px dotted;
+  }
+  .containerButtonsProfileLogout {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    padding: 0 0.5rem;
+    gap: 0.6rem;
+  }
+  .msgError {
+    font-size: 0.8rem;
+  }
+  .msgBienvenida {
+      font-size: 1rem;
+  }
 }
 
 /* .logo {

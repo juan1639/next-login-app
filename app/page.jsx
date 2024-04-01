@@ -14,14 +14,12 @@ export default function Home()
   return (
     <main className={styles.main}>
       <>
-        <h1>Home Page</h1>
+        <h1 className={styles.h1}>Home Page</h1>
 
         {
           !logeado[1]
             ? <FormularioLogin setLogeado={setLogeado} cargando={cargando} setCargando={setCargando}/>
-            : 
-            // <Bienvenido logeado={logeado} setLogeado={setLogeado} cargando ={cargando} setCargando={setCargando}/>
-            <p>bienvenido {logeado[0]}</p>
+            : <p>Iniciando sesión...</p>
         }
       </>
     </main>

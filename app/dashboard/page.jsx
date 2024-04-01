@@ -40,7 +40,7 @@ function Dashboard()
         <main className={styles.main}>
         <div className={styles.formulario}>
 
-            <h1>Sesion Iniciada</h1>
+            <h1 className={styles.h1}>Sesion Iniciada</h1>
             <h1 className={styles.msgBienvenida}>Bienvenido {user.email}</h1>
 
             {/* <span className={styles.avatar}>
@@ -54,7 +54,7 @@ function Dashboard()
                 </section>
             </span> */}
             
-            {JSON.stringify(user)}
+            <span className={styles.msgBienvenida}>{JSON.stringify(user.username)}</span>
             <div className={styles.containerButtonsProfileLogout}>
                 <button className={styles.button} onClick={() => getProfile()}>Profile</button>
                 <button className={styles.button} onClick={() => logout()}>Logout</button>

@@ -56,7 +56,7 @@ export default function FormularioLogin({setLogeado, cargando, setCargando})
         <>
           <form className={styles.formulario} onSubmit={handleSubmit}>
             
-            <h1>Iniciar Sesión</h1>
+            <h1 className={styles.h1}>Iniciar Sesión</h1>
 
             <input
                 className={styles.input}
