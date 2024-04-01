@@ -70,13 +70,21 @@
     animation: rotaLoader 1s linear infinite;
     display: flex;
 }
+.containerButtonsProfileLogout {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  padding: 0 1rem;
+  gap: 1rem;
+}
 @keyframes rotaLoader {
     0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
 }
 .msgError {
-  font-weight: 300;
   font-size: 1.2em;
+  font-weight: 500;
+  font-style: italic;
   color: red;
 }
 .msgBienvenida {

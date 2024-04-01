@@ -1,9 +1,9 @@
 "use client"
 
-import Image from "next/image";
-import styles from "./page.module.css";
-import { FormularioLogin } from "./login/page";
-import { Bienvenido } from './welcome/page'
+import Image from "next/image"
+import './globals.css'
+import styles from "./page.module.css"
+import FormularioLogin from "./login/page"
 import { useState } from 'react'
 
 export default function Home()
@@ -19,11 +19,11 @@ export default function Home()
         {
           !logeado[1]
             ? <FormularioLogin setLogeado={setLogeado} cargando={cargando} setCargando={setCargando}/>
-            : <Bienvenido logeado={logeado} setLogeado={setLogeado} cargando ={cargando} setCargando={setCargando}/>
-            // <p>bienvenido</p>
+            : 
+            // <Bienvenido logeado={logeado} setLogeado={setLogeado} cargando ={cargando} setCargando={setCargando}/>
+            <p>bienvenido {logeado[0]}</p>
         }
       </>
-
     </main>
   );
 }

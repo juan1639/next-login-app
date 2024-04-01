@@ -1,63 +1,80 @@
+"use client"
+
+import axios from "axios"
 import { useState } from 'react'
-import styles from "../page.module.css";
+import { useRouter } from "next/navigation"
+import styles from "../page.module.css"
 
-export const FormularioLogin = ({setLogeado, cargando, setCargando}) => {
-
-    const [user, setUser] = useState('')
-    const [pass, setPass] = useState('')
+export default function FormularioLogin({setLogeado, cargando, setCargando})
+{
     const [error, setError] = useState(false)
 
-    const handleSubmit = (e) => {
+    const [credentials, setCredentials] = useState({
+        email: "",
+        password: ""
+    });
+    
+    const router = useRouter();
+
+    const handleSubmit = async (e) => {
 
         e.preventDefault()
 
         console.log('submit')
 
-        if ([user, pass].includes('')) {
-            setError(true)
-            console.warn('error! campo vacio...')
-            return
-        }
-
-        setError(false)
         setCargando(true)
         console.log('cargando...')
 
-        setTimeout(() => {
-            setLogeado([user, true])
+        try
+        {
+            const res = await axios.post("/api/auth/login", credentials);
+
+            router.push("/dashboard");
+            console.log(res)
+
+            setLogeado([credentials.email, true])
             setCargando(false)
+            setError(false)
             console.log('sesion iniciada!')
-        }, 2800)
+        }
+        catch(error)
+        {
+            console.error(error)
+            setError(true)
+            setCargando(false)
+            router.push("/")
+        }
+
+        /* if (res.status === 200)
+        {
+            router.push("/dashboard");
+            console.log(res)
+        }*/
     }
 
     return (
         <>
-          <form
-            className={styles.formulario}
-            onSubmit={handleSubmit}
-          >
-    
+          <form className={styles.formulario} onSubmit={handleSubmit}>
+            
             <h1>Iniciar Sesión</h1>
-    
-            <input 
-                className={styles.input}
-                type="text"
-                name="usuario"
-                placeholder='Usuario...'
-                value={user}
-                onChange={(e) => setUser(e.target.value)}
-            />
 
-            <input 
+            <input
+                className={styles.input}
+                type="email"
+                name="email"
+                placeholder="email"
+                onChange={(e) => setCredentials({...credentials, email: e.target.value})}
+            />
+            
+            <input
                 className={styles.input}
                 type="password"
                 name="password"
-                placeholder='Password...'
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
+                placeholder="password"
+                onChange={(e) => setCredentials({...credentials, password: e.target.value,})}
             />
-    
-            {error && <span className={styles.msgError}>Falta introducir usuario y/o pass</span>}
+
+            {error && <span className={styles.msgError}>Error invalid user or password</span>}
             {!cargando && <button className={styles.button}>Iniciar Sesión</button>}
             {cargando && <span className={styles.loader}></span>}
           </form>
